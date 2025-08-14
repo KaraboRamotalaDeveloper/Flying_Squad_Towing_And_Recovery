@@ -1,63 +1,58 @@
-import React, { useState } from "react";
-import { X, ChevronLeft, ChevronRight } from "lucide-react";
+import React, { useState, useEffect } from "react";
 
 const GalleryModal = ({ isOpen, onClose, images }) => {
-  const [currentGalleryImage, setCurrentGalleryImage] = useState(0);
+  const [currentModalSlide, setCurrentModalSlide] = useState(0);
 
-  if (!isOpen) return null;
+  if (!isOpen) {
+    return null;
+  }
 
-  const nextImage = () => {
-    setCurrentGalleryImage((prevImage) => (prevImage + 1) % images.length);
+  // Handlers for navigating the slideshow within the modal
+  const handleNext = () => {
+    setCurrentModalSlide((prev) => (prev + 1) % images.length);
   };
 
-  const prevImage = () => {
-    setCurrentGalleryImage(
-      (prevImage) => (prevImage - 1 + images.length) % images.length
-    );
+  const handlePrev = () => {
+    setCurrentModalSlide((prev) => (prev - 1 + images.length) % images.length);
   };
 
   return (
-    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-95 p-2 sm:p-4">
-      <div className="relative flex h-full w-full flex-col items-center justify-center">
+    <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-75 p-4">
+      <div className="relative max-w-5xl w-full h-full">
+        {/* Close button */}
         <button
           onClick={onClose}
-          className="absolute right-2 top-2 z-50 text-white transition-colors hover:text-orange-500 md:right-4 md:top-4"
-          aria-label="Close gallery"
+          className="absolute top-4 right-4 z-10 text-white text-3xl font-bold p-2 bg-gray-800 bg-opacity-50 rounded-full hover:bg-opacity-75 transition-opacity"
         >
-          <X size={28} />
+          &times;
         </button>
-        <div className="relative w-full max-w-3xl lg:max-w-5xl">
-          <img
-            src={images[currentGalleryImage].src}
-            alt={images[currentGalleryImage].alt}
-            className="h-auto w-full max-h-[80vh] rounded-xl object-contain shadow-2xl transition-transform duration-300"
-          />
-          <button
-            onClick={prevImage}
-            className="absolute left-2 top-1/2 -translate-y-1/2 rounded-full bg-black bg-opacity-50 p-1 text-white transition-colors hover:bg-opacity-75 sm:left-4 sm:p-2"
-            aria-label="Previous image"
-          >
-            <ChevronLeft size={24} />
-          </button>
-          <button
-            onClick={nextImage}
-            className="absolute right-2 top-1/2 -translate-y-1/2 rounded-full bg-black bg-opacity-50 p-1 text-white transition-colors hover:bg-opacity-75 sm:right-4 sm:p-2"
-            aria-label="Next image"
-          >
-            <ChevronRight size={24} />
-          </button>
-        </div>
-        <div className="mt-4 flex space-x-2">
-          {images.map((_, index) => (
-            <button
-              key={index}
-              onClick={() => setCurrentGalleryImage(index)}
-              className={`h-3 w-3 rounded-full transition-colors duration-300 ${
-                index === currentGalleryImage ? "bg-orange-500" : "bg-gray-500"
-              }`}
-              aria-label={`Go to image ${index + 1}`}
-            ></button>
-          ))}
+
+        {/* Previous button */}
+        <button
+          onClick={handlePrev}
+          className="absolute top-1/2 left-4 z-10 transform -translate-y-1/2 text-white text-4xl p-2 bg-gray-800 bg-opacity-50 rounded-full hover:bg-opacity-75 transition-opacity"
+        >
+          &#10094;
+        </button>
+
+        {/* Next button */}
+        <button
+          onClick={handleNext}
+          className="absolute top-1/2 right-4 z-10 transform -translate-y-1/2 text-white text-4xl p-2 bg-gray-800 bg-opacity-50 rounded-full hover:bg-opacity-75 transition-opacity"
+        >
+          &#10095;
+        </button>
+
+        {/* Slideshow image */}
+        <img
+          src={images[currentModalSlide].src}
+          alt={images[currentModalSlide].alt}
+          className="max-h-full max-w-full m-auto object-contain rounded-lg shadow-2xl"
+        />
+
+        {/* Image count */}
+        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 text-white text-lg font-semibold bg-gray-800 bg-opacity-50 px-4 py-2 rounded-full">
+          {currentModalSlide + 1} / {images.length}
         </div>
       </div>
     </div>
