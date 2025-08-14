@@ -10,6 +10,8 @@ import NotFoundPage from "./pages/NotFoundPage.jsx";
 import OurTeamPage from "./pages/OurTeamPage.jsx";
 import TestimonialsPage from "./pages/TestimonialsPage.jsx";
 import ServicesPage from "./pages/ServicesPages/ServicesPage.jsx";
+import TowTruckPage from "./pages/ServicesPages/TowTruckPage.jsx";
+import VehicleRecoveriesPage from "./pages/ServicesPages/VehiclesRecoveriesPage.jsx";
 
 function App() {
   return (
@@ -25,7 +27,12 @@ function App() {
           <Route path="/not-found" element={<NotFoundPage />} />
           <Route path="/our-team" element={<OurTeamPage />} />
           <Route path="/testimonials" element={<TestimonialsPage />} />
-          <Route path="/services" element={<ServicesPage />} />
+          <Route path="/all-services" element={<ServicesPage />} />
+          <Route path="/tow-trucks" element={<TowTruckPage />} />
+          <Route
+            path="/vehicles-recoveries"
+            element={<VehicleRecoveriesPage />}
+          />
         </Route>
       </Routes>
     </div>

@@ -97,23 +97,30 @@ const Header = () => {
               {servicesDropdownOpen && (
                 <div className="absolute left-0 top-full z-10 mt-2 w-48 rounded-md bg-white text-gray-900 shadow-lg dark:bg-gray-800 dark:text-gray-100">
                   <div className="p-2">
-                    <button
-                      onClick={() => handleNavigation("services")}
-                      className="block w-full text-left rounded-md px-4 py-2 transition-colors hover:bg-gray-100 dark:hover:bg-gray-700"
-                    >
-                      All Services
-                    </button>
-                    {services &&
-                      services.map((service, id) => (
-                        <Link>
-                          <button
-                            key={id}
-                            className="block w-full text-left rounded-md px-4 py-2 transition-colors hover:bg-gray-100 dark:hover:bg-gray-700"
-                          >
-                            {service}
-                          </button>
-                        </Link>
-                      ))}
+                    <Link to="/all-services">
+                      <button
+                        onClick={() => handleNavigation("services")}
+                        className="block w-full text-left rounded-md px-4 py-2 transition-colors hover:bg-gray-100 dark:hover:bg-gray-700"
+                      >
+                        All Services
+                      </button>
+                    </Link>
+                    <Link to="/tow-trucks">
+                      <button
+                        onClick={() => handleNavigation("services")}
+                        className="block w-full text-left rounded-md px-4 py-2 transition-colors hover:bg-gray-100 dark:hover:bg-gray-700"
+                      >
+                        Tow Trucks
+                      </button>
+                    </Link>
+                    <Link to="/vehicles-recoveries">
+                      <button
+                        onClick={() => handleNavigation("services")}
+                        className="block w-full text-left rounded-md px-4 py-2 transition-colors hover:bg-gray-100 dark:hover:bg-gray-700"
+                      >
+                        Vehicle Recovery
+                      </button>
+                    </Link>
                   </div>
                 </div>
               )}
