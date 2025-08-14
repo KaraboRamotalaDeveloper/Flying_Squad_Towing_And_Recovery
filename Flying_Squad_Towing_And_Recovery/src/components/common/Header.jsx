@@ -37,7 +37,7 @@ const Header = ({ navigateToPage }) => {
           className="flex items-center space-x-2 text-xl font-extrabold text-orange-500 transition-colors hover:text-orange-400 md:text-2xl"
         >
           <Truck size={28} />
-          <span>Fast Towing</span>
+          <span>F.S Towing & Recovery</span>
         </button>
 
         <button
