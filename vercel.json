@@ -1,5 +1,1 @@
-{
-  "installCommand": "npm install --prefix Flying_Squad_Towing_And_Recovery/Flying_Squad_Towing_And_Recovery",
-  "buildCommand": "npm run build --prefix Flying_Squad_Towing_And_Recovery",
-  "outputDirectory": "Flying_Squad_Towing_And_Recovery/dist"
-}
+
