@@ -7,9 +7,11 @@ const VehicleRecoveriesPage = () => {
 
   // Define an array of placeholder images for the slideshow, focused on recovery.
   const images = [
-    "https://placehold.co/1000x600/10b981/ffffff?text=Winch-Out+Service",
-    "https://placehold.co/1000x600/f87171/ffffff?text=Accident+Recovery+in+Action",
-    "https://placehold.co/1000x600/3b82f6/ffffff?text=Vehicle+Recovery+Expertise",
+    "./src/assets/for-vehicle-recovery/IMG-20250813-WA0018.jpg",
+    "./src/assets/for-vehicle-recovery/IMG-20250813-WA0021.jpg",
+    "./src/assets/for-vehicle-recovery/IMG-20250813-WA0023.jpg",
+    "./src/assets/for-vehicle-recovery/IMG-20250813-WA0024.jpg",
+    "./src/assets/for-vehicle-recovery/IMG-20250813-WA0033.jpg",
   ];
 
   // Logic to automatically cycle through the images every 5 seconds.

@@ -221,11 +221,6 @@ const Header = () => {
                         FAQ
                       </button>
                     </Link>
-                    <Link to="/blog">
-                      <button className="block w-full text-left rounded-md px-4 py-2 transition-colors hover:bg-gray-100 dark:hover:bg-gray-700">
-                        Blog
-                      </button>
-                    </Link>
                   </div>
                 </div>
               )}

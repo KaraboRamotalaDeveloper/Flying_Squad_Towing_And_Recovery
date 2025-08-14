@@ -2,7 +2,6 @@ import { Routes, Route } from "react-router-dom";
 import MainLayout from "./components/layouts/MainLayout.jsx";
 import Homepage from "./pages/Homepage.jsx";
 import AboutPage from "./pages/AboutPage.jsx";
-import BlogPage from "./pages/BlogPage.jsX";
 import ContactPage from "./pages/ContactPage.jsx";
 import FaqPage from "./pages/FaqPage.jsx";
 import GalleryPage from "./pages/GalleryPage.jsx";
@@ -20,7 +19,6 @@ function App() {
         <Route path="/" element={<MainLayout />}>
           <Route index element={<Homepage />} />
           <Route path="/about" element={<AboutPage />} />
-          <Route path="/blog" element={<BlogPage />} />
           <Route path="/contacts" element={<ContactPage />} />
           <Route path="/faqs" element={<FaqPage />} />
           <Route path="/gallery" element={<GalleryPage />} />

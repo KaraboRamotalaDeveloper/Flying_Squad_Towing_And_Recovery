@@ -8,9 +8,13 @@ const TowTruckPage = () => {
   // Define an array of placeholder images for the slideshow.
   // You can replace these with your own images.
   const images = [
-    "https://placehold.co/1000x600/f87171/ffffff?text=Heavy-Duty+Towing+1",
-    "https://placehold.co/1000x600/3b82f6/ffffff?text=Tow+Truck+In+Action+2",
-    "https://placehold.co/1000x600/10b981/ffffff?text=Professional+Service+3",
+    "./src/assets/for-tow-truck/IMG-20250813-WA0019.jpg",
+    "./src/assets/for-tow-truck/IMG-20250813-WA0026.jpg",
+    "./src/assets/for-tow-truck/IMG-20250813-WA0029.jpg",
+    "./src/assets/for-tow-truck/IMG-20250813-WA0030.jpg",
+    "./src/assets/for-tow-truck/IMG-20250813-WA0032.jpg",
+    "./src/assets/for-tow-truck/IMG-20250813-WA0034.jpg",
+    "./src/assets/for-tow-truck/IMG-20250813-WA0035.jpg",
   ];
 
   // Logic to automatically cycle through the images every 5 seconds.

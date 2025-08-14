@@ -11,23 +11,51 @@ const GalleryPage = () => {
   // Define the images for the gallery. You can replace these with your own.
   const galleryImages = [
     {
-      src: "https://placehold.co/1280x720/f87171/ffffff?text=Image+1",
+      src: "./src/assets/for-tow-truck/IMG-20250813-WA0019.jpg",
       alt: "Tow truck on the road",
     },
     {
-      src: "https://placehold.co/1280x720/3b82f6/ffffff?text=Image+2",
+      src: "./src/assets/for-tow-truck/IMG-20250813-WA0035.jpg",
       alt: "Roadside assistance in progress",
     },
     {
-      src: "https://placehold.co/1280x720/10b981/ffffff?text=Image+3",
+      src: "./src/assets/for-tow-truck/IMG-20250813-WA0034.jpg",
       alt: "Heavy-duty truck towing",
     },
     {
-      src: "https://placehold.co/1280x720/6366f1/ffffff?text=Image+4",
+      src: "./src/assets/for-vehicle-recovery/IMG-20250813-WA0021.jpg",
       alt: "Winch-out service",
     },
     {
-      src: "https://placehold.co/1280x720/eab308/ffffff?text=Image+5",
+      src: "./src/assets/for-tow-truck/IMG-20250813-WA0032.jpg",
+      alt: "Accident recovery",
+    },
+    {
+      src: "./src/assets/for-tow-truck/IMG-20250813-WA0030.jpg",
+      alt: "Accident recovery",
+    },
+    {
+      src: "./src/assets/for-vehicle-recovery/IMG-20250813-WA0023.jpg",
+      alt: "Accident recovery",
+    },
+    {
+      src: "./src/assets/for-tow-truck/IMG-20250813-WA0029.jpg",
+      alt: "Accident recovery",
+    },
+    {
+      src: "./src/assets/for-tow-truck/IMG-20250813-WA0026.jpg",
+      alt: "Accident recovery",
+    },
+    {
+      src: "./src/assets/for-vehicle-recovery/IMG-20250813-WA0021.jpg",
+      alt: "Accident recovery",
+    },
+    {
+      src: "./src/assets/for-vehicle-recovery/IMG-20250813-WA0018.jpg",
+      alt: "Accident recovery",
+    },
+    {
+      src: "./src/assets/for-tow-truck/IMG-20250813-WA0019.jpg",
       alt: "Accident recovery",
     },
   ];
