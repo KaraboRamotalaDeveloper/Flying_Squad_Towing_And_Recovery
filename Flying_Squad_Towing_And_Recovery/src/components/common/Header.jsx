@@ -290,17 +290,6 @@ const Header = () => {
                 </button>
               </Link>
             </li>
-            <li className="border-b border-gray-700">
-              <Link to="/blog">
-                {" "}
-                <button
-                  onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
-                  className="flex w-full items-center py-2"
-                >
-                  <Newspaper size={20} className="mr-3 text-orange-500" /> Blog
-                </button>
-              </Link>
-            </li>
             <li>
               <Link to="/contacts">
                 {" "}
