@@ -1,8 +1,28 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+import emailjs from "@emailjs/browser";
 
 const ContactForm = () => {
+  const form = useRef();
+
+  const sendEmail = (e) => {
+    e.preventDefault();
+
+    emailjs
+      .sendForm("service_fzhimuc", "template_gae3cj9", form.current, {
+        publicKey: "OU5lhMsZnfzgdme7Q",
+      })
+      .then(
+        () => {
+          console.log("SUCCESS!");
+        },
+        (error) => {
+          console.log("FAILED...", error.text);
+        }
+      );
+  };
   // State for form fields
   const [name, setName] = useState("");
+  const [subject, setSubject] = useState("");
   const [email, setEmail] = useState("");
   const [enquiry, setEnquiry] = useState("");
   const [photo, setPhoto] = useState(null);
@@ -41,6 +61,7 @@ const ContactForm = () => {
 
       // Reset the form fields
       setName("");
+      setSubject("");
       setEmail("");
       setEnquiry("");
       setPhoto(null);
@@ -61,7 +82,7 @@ const ContactForm = () => {
         </p>
       </div>
 
-      <form onSubmit={handleSubmit} className="space-y-6">
+      <form ref={form} onSubmit={sendEmail} className="space-y-6">
         {/* Name Field */}
         <div>
           <label
@@ -99,6 +120,24 @@ const ContactForm = () => {
             className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm transition duration-150 ease-in-out"
           />
         </div>
+        {/* Subject Field */}
+        <div>
+          <label
+            htmlFor="subject"
+            className="block text-sm font-medium text-gray-700 mb-1"
+          >
+            Subject
+          </label>
+          <input
+            type="text"
+            id="subject"
+            name="subject"
+            value={subject}
+            onChange={(e) => setSubject(e.target.value)}
+            required
+            className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm transition duration-150 ease-in-out"
+          />
+        </div>
 
         {/* Enquiry/Description Field */}
         <div>
@@ -110,31 +149,13 @@ const ContactForm = () => {
           </label>
           <textarea
             id="enquiry"
-            name="enquiry"
+            name="message"
             rows="4"
             value={enquiry}
             onChange={(e) => setEnquiry(e.target.value)}
             required
             className="mt-1 block w-full px-4 py-2 border border-gray-300 rounded-md shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm transition duration-150 ease-in-out"
           ></textarea>
-        </div>
-
-        {/* Photo Upload (Optional) */}
-        <div>
-          <label
-            htmlFor="photo"
-            className="block text-sm font-medium text-gray-700 mb-1"
-          >
-            Attach a Photo of an issue you have (Optional)
-          </label>
-          <input
-            type="file"
-            id="photo"
-            name="photo"
-            accept="image/*"
-            onChange={(e) => setPhoto(e.target.files[0])}
-            className="mt-1 block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-md file:border-0 file:text-sm file:font-semibold file:bg-indigo-50 file:text-indigo-700 hover:file:bg-indigo-100 cursor-pointer transition duration-150 ease-in-out"
-          />
         </div>
 
         {/* Status Message Container */}
