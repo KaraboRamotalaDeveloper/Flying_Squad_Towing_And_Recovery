@@ -45,9 +45,8 @@ function Homepage() {
       icon: <Truck className="text-orange-500" size={48} />,
     },
     {
-      name: "Flat Tire Service",
-      description:
-        "On-the-spot tire changes to get you back on the road quickly and safely.",
+      name: "Vehicle Recovery",
+      description: "Stranded? We'll get you back on the road, no matter what.",
       icon: <Wrench className="text-orange-500" size={48} />,
     },
     {
@@ -57,9 +56,9 @@ function Homepage() {
       icon: <BatteryCharging className="text-orange-500" size={48} />,
     },
     {
-      name: "Fuel Delivery",
+      name: "Long distance",
       description:
-        "Run out of gas? We'll deliver fuel directly to your location, anytime.",
+        "Out of town? We'll arrive directly to your location, anytime.",
       icon: <MapPin className="text-orange-500" size={48} />,
     },
   ];
@@ -70,7 +69,7 @@ function Homepage() {
       author: "Jane D.",
     },
     {
-      text: "The driver was friendly and helped me with a flat tire late at night. Lifesaver!",
+      text: "The driver was friendly and helped me. Lifesaver!",
       author: "Mark T.",
     },
     {
