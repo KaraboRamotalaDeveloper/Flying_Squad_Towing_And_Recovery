@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   Truck,
   Phone,
@@ -8,8 +8,9 @@ import {
   ClipboardCheck,
   Newspaper,
 } from "lucide-react";
+import { Link } from "react-router-dom";
 
-const Header = ({ navigateToPage }) => {
+const Header = () => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
   const [aboutDropdownOpen, setAboutDropdownOpen] = useState(false);
@@ -21,24 +22,41 @@ const Header = ({ navigateToPage }) => {
     setResourcesDropdownOpen(false);
   };
 
-  const handleNavigation = (pageKey, serviceId) => {
-    navigateToPage(pageKey, serviceId);
+  const handleNavigation = () => {
     setIsMobileMenuOpen(false);
     closeAllDropdowns();
   };
+  useEffect(() => {
+    const handleScroll = () => {
+      // Don't close if a dropdown is already closed
+      if (servicesDropdownOpen || aboutDropdownOpen || resourcesDropdownOpen) {
+        closeAllDropdowns();
+      }
+    };
+
+    // Add the event listener when the component mounts
+    window.addEventListener("scroll", handleScroll);
+
+    // Remove the event listener when the component unmounts
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [servicesDropdownOpen, aboutDropdownOpen, resourcesDropdownOpen]);
 
   const { data: services } = ["Service 1", "Service 2"];
 
   return (
     <header className="sticky top-0 z-40 w-full bg-slate-900 py-4 text-white shadow-lg md:py-6">
       <div className="container mx-auto flex items-center justify-between p-4 md:px-6 lg:px-8">
-        <button
-          onClick={() => navigateToPage("home")}
-          className="flex items-center space-x-2 text-xl font-extrabold text-orange-500 transition-colors hover:text-orange-400 md:text-2xl"
-        >
-          <Truck size={28} />
-          <span>F.S Towing & Recovery</span>
-        </button>
+        <Link to="/">
+          <button
+            onClick={() => setIsMobileMenuOpen(false)}
+            className="flex items-center space-x-2 text-xl font-extrabold text-orange-500 transition-colors hover:text-orange-400 md:text-2xl"
+          >
+            <Truck size={28} />
+            <span>F.S Towing & Recovery</span>
+          </button>
+        </Link>
 
         <button
           id="mobile-menu-button"
@@ -87,25 +105,25 @@ const Header = ({ navigateToPage }) => {
                     </button>
                     {services &&
                       services.map((service, id) => (
-                        <button
-                          key={id}
-                          onClick={() => handleNavigation("service-detail", id)}
-                          className="block w-full text-left rounded-md px-4 py-2 transition-colors hover:bg-gray-100 dark:hover:bg-gray-700"
-                        >
-                          {"Service"}
-                        </button>
+                        <Link>
+                          <button
+                            key={id}
+                            className="block w-full text-left rounded-md px-4 py-2 transition-colors hover:bg-gray-100 dark:hover:bg-gray-700"
+                          >
+                            {service}
+                          </button>
+                        </Link>
                       ))}
                   </div>
                 </div>
               )}
             </li>
             <li>
-              <button
-                onClick={() => navigateToPage("gallery")}
-                className="transition-colors hover:text-orange-500"
-              >
-                Gallery
-              </button>
+              <Link to="/gallery">
+                <button className="transition-colors hover:text-orange-500">
+                  Gallery
+                </button>
+              </Link>
             </li>
             <li className="group relative">
               <button
@@ -135,24 +153,30 @@ const Header = ({ navigateToPage }) => {
               {aboutDropdownOpen && (
                 <div className="absolute left-0 top-full z-10 mt-2 w-48 rounded-md bg-white text-gray-900 shadow-lg dark:bg-gray-800 dark:text-gray-100">
                   <div className="p-2">
-                    <button
-                      onClick={() => handleNavigation("about")}
-                      className="block w-full text-left rounded-md px-4 py-2 transition-colors hover:bg-gray-100 dark:hover:bg-gray-700"
-                    >
-                      Our Story
-                    </button>
-                    <button
-                      onClick={() => handleNavigation("our-team")}
-                      className="block w-full text-left rounded-md px-4 py-2 transition-colors hover:bg-gray-100 dark:hover:bg-gray-700"
-                    >
-                      Our Team
-                    </button>
-                    <button
-                      onClick={() => handleNavigation("testimonials")}
-                      className="block w-full text-left rounded-md px-4 py-2 transition-colors hover:bg-gray-100 dark:hover:bg-gray-700"
-                    >
-                      Testimonials
-                    </button>
+                    <Link to="/our-story">
+                      <button
+                        onClick={() => handleNavigation("about")}
+                        className="block w-full text-left rounded-md px-4 py-2 transition-colors hover:bg-gray-100 dark:hover:bg-gray-700"
+                      >
+                        Our Story
+                      </button>
+                    </Link>
+                    <Link to="/our-team">
+                      <button
+                        onClick={() => handleNavigation("our-team")}
+                        className="block w-full text-left rounded-md px-4 py-2 transition-colors hover:bg-gray-100 dark:hover:bg-gray-700"
+                      >
+                        Our Team
+                      </button>
+                    </Link>
+                    <Link to="/testimonials">
+                      <button
+                        onClick={() => handleNavigation("testimonials")}
+                        className="block w-full text-left rounded-md px-4 py-2 transition-colors hover:bg-gray-100 dark:hover:bg-gray-700"
+                      >
+                        Testimonials
+                      </button>
+                    </Link>
                   </div>
                 </div>
               )}
@@ -185,29 +209,26 @@ const Header = ({ navigateToPage }) => {
               {resourcesDropdownOpen && (
                 <div className="absolute left-0 top-full z-10 mt-2 w-48 rounded-md bg-white text-gray-900 shadow-lg dark:bg-gray-800 dark:text-gray-100">
                   <div className="p-2">
-                    <button
-                      onClick={() => handleNavigation("faq")}
-                      className="block w-full text-left rounded-md px-4 py-2 transition-colors hover:bg-gray-100 dark:hover:bg-gray-700"
-                    >
-                      FAQ
-                    </button>
-                    <button
-                      onClick={() => handleNavigation("blog")}
-                      className="block w-full text-left rounded-md px-4 py-2 transition-colors hover:bg-gray-100 dark:hover:bg-gray-700"
-                    >
-                      Blog
-                    </button>
+                    <Link to="/faqs">
+                      <button className="block w-full text-left rounded-md px-4 py-2 transition-colors hover:bg-gray-100 dark:hover:bg-gray-700">
+                        FAQ
+                      </button>
+                    </Link>
+                    <Link to="/blog">
+                      <button className="block w-full text-left rounded-md px-4 py-2 transition-colors hover:bg-gray-100 dark:hover:bg-gray-700">
+                        Blog
+                      </button>
+                    </Link>
                   </div>
                 </div>
               )}
             </li>
             <li>
-              <button
-                onClick={() => navigateToPage("contact")}
-                className="transition-colors hover:text-orange-500"
-              >
-                Contact
-              </button>
+              <Link to="/contacts">
+                <button className="transition-colors hover:text-orange-500">
+                  Contact
+                </button>
+              </Link>
             </li>
           </ul>
         </nav>
@@ -223,54 +244,71 @@ const Header = ({ navigateToPage }) => {
         <nav className="px-4 pb-4 pt-2 text-white">
           <ul className="flex flex-col space-y-2 text-lg">
             <li className="border-b border-gray-700">
-              <button
-                onClick={() => navigateToPage("services")}
-                className="flex w-full items-center py-2"
-              >
-                <Wrench size={20} className="mr-3 text-orange-500" /> Services
-              </button>
+              <Link to="/all-services">
+                {" "}
+                <button
+                  onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                  className="flex w-full items-center py-2"
+                >
+                  <Wrench size={20} className="mr-3 text-orange-500" /> Services
+                </button>
+              </Link>
             </li>
             <li className="border-b border-gray-700">
-              <button
-                onClick={() => navigateToPage("gallery")}
-                className="flex w-full items-center py-2"
-              >
-                <Newspaper size={20} className="mr-3 text-orange-500" /> Gallery
-              </button>
+              <Link to="/gallery">
+                {" "}
+                <button
+                  onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                  className="flex w-full items-center py-2"
+                >
+                  <Newspaper size={20} className="mr-3 text-orange-500" />{" "}
+                  Gallery
+                </button>
+              </Link>
             </li>
             <li className="border-b border-gray-700">
-              <button
-                onClick={() => navigateToPage("about")}
-                className="flex w-full items-center py-2"
-              >
-                <HeartHandshake size={20} className="mr-3 text-orange-500" />{" "}
-                About Us
-              </button>
+              <Link to="/about">
+                <button
+                  onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                  className="flex w-full items-center py-2"
+                >
+                  <HeartHandshake size={20} className="mr-3 text-orange-500" />{" "}
+                  About Us
+                </button>
+              </Link>
             </li>
             <li className="border-b border-gray-700">
-              <button
-                onClick={() => navigateToPage("faq")}
-                className="flex w-full items-center py-2"
-              >
-                <ClipboardCheck size={20} className="mr-3 text-orange-500" />{" "}
-                FAQ
-              </button>
+              <Link to="/faqs">
+                <button
+                  onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                  className="flex w-full items-center py-2"
+                >
+                  <ClipboardCheck size={20} className="mr-3 text-orange-500" />{" "}
+                  FAQ
+                </button>
+              </Link>
             </li>
             <li className="border-b border-gray-700">
-              <button
-                onClick={() => navigateToPage("blog")}
-                className="flex w-full items-center py-2"
-              >
-                <Newspaper size={20} className="mr-3 text-orange-500" /> Blog
-              </button>
+              <Link to="/blog">
+                {" "}
+                <button
+                  onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                  className="flex w-full items-center py-2"
+                >
+                  <Newspaper size={20} className="mr-3 text-orange-500" /> Blog
+                </button>
+              </Link>
             </li>
             <li>
-              <button
-                onClick={() => navigateToPage("contact")}
-                className="flex w-full items-center py-2"
-              >
-                <Phone size={20} className="mr-3 text-orange-500" /> Contact
-              </button>
+              <Link to="/contacts">
+                {" "}
+                <button
+                  onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+                  className="flex w-full items-center py-2"
+                >
+                  <Phone size={20} className="mr-3 text-orange-500" /> Contact
+                </button>
+              </Link>
             </li>
           </ul>
         </nav>
