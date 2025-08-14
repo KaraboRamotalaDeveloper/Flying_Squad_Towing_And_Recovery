@@ -1,4 +1,5 @@
 import React from "react";
+import { Truck } from "lucide-react";
 
 const PageLoader = () => (
   <div className="flex h-screen flex-col items-center justify-center bg-gray-50 dark:bg-gray-900">

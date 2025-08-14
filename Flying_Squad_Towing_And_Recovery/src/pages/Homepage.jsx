@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Phone, Star, BadgeCheck } from "lucide-react";
-import Modal from "../components/ui/Modal";
+import Modal from "../components/ui/Modals/Modal";
 
 const Homepage = () => {
   const [isContactModalOpen, setIsContactModalOpen] = useState(false);
