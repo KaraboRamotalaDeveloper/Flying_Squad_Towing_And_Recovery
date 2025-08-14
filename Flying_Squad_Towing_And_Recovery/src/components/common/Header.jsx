@@ -160,7 +160,7 @@ const Header = () => {
               {aboutDropdownOpen && (
                 <div className="absolute left-0 top-full z-10 mt-2 w-48 rounded-md bg-white text-gray-900 shadow-lg dark:bg-gray-800 dark:text-gray-100">
                   <div className="p-2">
-                    <Link to="/our-story">
+                    <Link to="/about">
                       <button
                         onClick={() => handleNavigation("about")}
                         className="block w-full text-left rounded-md px-4 py-2 transition-colors hover:bg-gray-100 dark:hover:bg-gray-700"

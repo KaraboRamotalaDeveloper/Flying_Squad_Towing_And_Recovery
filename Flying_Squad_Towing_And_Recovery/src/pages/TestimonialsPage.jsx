@@ -1,5 +1,20 @@
 import React from "react";
 
+const testimonials = [
+  {
+    text: "Fast and professional service! They arrived within 20 minutes and had my car towed safely.",
+    author: "Jane D.",
+  },
+  {
+    text: "The driver was friendly and helped me with a flat tire late at night. Lifesaver!",
+    author: "Mark T.",
+  },
+  {
+    text: "Very reliable and transparent pricing. I highly recommend them for any roadside assistance.",
+    author: "Carlos R.",
+  },
+];
+
 const TestimonialsPage = () => (
   <section className="py-12 md:py-24">
     <div className="container mx-auto px-4 text-center">
