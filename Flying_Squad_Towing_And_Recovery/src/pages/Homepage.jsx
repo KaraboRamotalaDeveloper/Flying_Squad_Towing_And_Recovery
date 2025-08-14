@@ -196,42 +196,50 @@ function Homepage() {
         </section>
 
         {/* Contact Us Section */}
-        <section id="contact" className="py-16 md:py-24">
-          <div className="container mx-auto px-4 text-center">
-            <h2 className="mb-4 text-3xl font-bold md:text-4xl">Contact Us</h2>
-            <p className="mx-auto mb-8 max-w-2xl text-lg text-gray-600 dark:text-gray-400">
-              Need immediate assistance? Give us a call or send us a message.
-              We're here to help.
-            </p>
-            <div className="flex flex-col items-center space-y-6 md:flex-row md:justify-center md:space-x-8 md:space-y-0">
-              <div className="rounded-full bg-slate-900 p-6 text-white shadow-xl dark:bg-gray-800">
+        <section
+          id="contact"
+          className="py-16 md:py-24 flex justify-center items-center"
+        >
+          <div className="mt-8 max-w-3xl w-full bg-slate-800 text-white p-8 md:p-12 rounded-2xl shadow-xl border border-gray-700">
+            <h2 className="text-center text-2xl font-bold text-white mb-6">
+              Contact Details
+            </h2>
+            <div className="flex flex-col md:flex-row gap-8">
+              {/* Phone information */}
+
+              <div className="flex-1 text-center">
                 <MailIcon size={32} className="mx-auto mb-2 text-orange-500" />
                 <p className="text-sm font-bold uppercase tracking-wider text-gray-400">
                   Our Email
                 </p>
-                <p className="text-md font-bold text-white">
+                <a
+                  href="mailto:SURENFLYINGSQUAD@GMAIL.COM"
+                  className="mt-1 block text-lg font-bold text-white transition-colors hover:text-orange-500"
+                >
                   SURENFLYINGSQUAD@GMAIL.COM
-                </p>
+                </a>
               </div>
 
-              <div className="rounded-full bg-slate-900 p-6 text-white shadow-xl dark:bg-gray-800">
-                <Phone size={32} className="mx-auto mb-2 text-orange-500" />
+              <div className="flex-1 text-center">
+                <Phone size={48} className="mx-auto mb-4 text-orange-500" />
                 <p className="text-sm font-bold uppercase tracking-wider text-gray-400">
                   Call Us 24/7
                 </p>
                 <a
-                  href="tel:5551234567"
-                  className="text-2xl font-bold text-white transition-colors hover:text-orange-500"
+                  href="tel:+27723668009"
+                  className="mt-1 block text-lg font-bold text-white transition-colors hover:text-orange-500"
                 >
                   (+27) 72-3668-009
                 </a>
               </div>
-              <div className="rounded-full bg-slate-900 p-6 text-white shadow-xl dark:bg-gray-800">
-                <MapPin size={32} className="mx-auto mb-2 text-orange-500" />
+
+              {/* Address information */}
+              <div className="flex-1 text-center">
+                <MapPin size={48} className="mx-auto mb-4 text-orange-500" />
                 <p className="text-sm font-bold uppercase tracking-wider text-gray-400">
                   Our Address
                 </p>
-                <p className="text-md font-bold text-white">
+                <p className="mt-1 block text-lg font-bold text-white">
                   33 Glenaire Avenue, Brindhaven, Verulam,KwaZulu-Natal, 4339
                 </p>
               </div>
@@ -249,10 +257,10 @@ function Homepage() {
           For immediate assistance, please call us:
         </p>
         <a
-          href="tel:5551234567"
+          href="tel:+27723668009"
           className="inline-flex items-center rounded-md bg-orange-500 px-6 py-3 text-lg font-bold text-white shadow-md transition-colors hover:bg-orange-600"
         >
-          <Phone className="mr-2" /> (555) 123-4567
+          <Phone className="mr-2" /> (+27) 72-3668-009
         </a>
       </Modal>
     </div>
